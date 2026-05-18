@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login Form</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900	&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+
+}
+
+body{
+width: 100vw;
+height: 100vh;
+font-family: 'Sora', sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;	
+background: linear-gradient(135deg, #121212, #1b1b1b, #27271b);
+}
+
+#loginform{
+width: 380px;
+padding: 50px 40px;
+border-radius: 8px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items: center;
+background: #3C4048;	
+}
+
+h1{
+font-size: 27px;
+color: white;
+font-weight: 700;
+margin-bottom: 6px;
+}
+
+.subtitle{
+font-size: 13px;
+color: #EAEAEA;
+margin-bottom: 30px;
+}
+
+.input-group{
+width: 100%;
+margin-bottom: 14px;
+}
+
+input{
+width:100%;
+padding: 14px 16px;
+border-radius:10px;
+border: 1px solid #B2B2B2;
+color: black;
+outline:none;
+
+}
+
+input:placeholder{
+color: #EEEEEE;
+
+}
+
+
+button[type='submit']{
+width: 100%;
+ background-color: #1591DC;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+margin-bottom: 14px;
+  cursor: pointer;
+
+
+}
+
+
+.bottom-links{
+color:#D7D7D7;
+text-decoration: none;
+font-size: 12px;
+
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+	<form id="loginform" onsubmit="handlelogin(event)">
+	
+		<h1>Welcome</h1>
+		<p class="subtitle">Log in to your account</p>
+
+		<div class="input-group">
+			<input type="email" id="username" placeholder="Email">
+			<div class="error" id="usernameError"></div>
+		</div>
+
+		<div class="input-group">
+			<input type="password" id="password" placeholder="Password">
+			<div class="error" id="passwordError"></div>
+		</div>
+		
+
+		<p id="message"></p>
+
+		<button type="submit">Log In</button>
+
+		<div class="bottom-links">
+			<a href="#">Forgot password?</a>
+			<a href="#">Create an account</a>
+		</div>
+
+
+
+
+
+
+
+
+	</form>
+
+
+
+
+
+<script>
+
+function handlelogin(event){
+event.preventDefault();
+
+const username = document.getElementById('username').value.trim();
+const password = document.getElementById('password').value.trim();
+const message = document.getElementById('message');
+
+document.getElementById('usernameError').style.display = 'none';
+document.getElementById('passwordError').style.display = 'none';
+message.style.display = 'none';
+
+let valid = true;
+
+if (username === ''){
+	document.getElementById('usernameError').textContent = 'Username is required';
+	document.getElementById('usernameError').style.display = 'block';
+	valid = false;
+}
+
+if (password === ''){
+	document.getElementById('passwordError').textContent = 'Password is required';
+	document.getElementById('passwordError').style.display = 'block';
+	valid = false;
+}
+else if(password.length < 6){
+	document.getElementById('passwordError').textContent = 'Password should contain at least 6 characters';
+	document.getElementById('passwordError').style.display = 'block';
+	valid = false;
+}
+
+if (valid){
+	console.log('Login attempt:', {username, password});
+	message.style.color = '#6FCF97';
+	message.textContent = 'Login Successful';
+	message.style.display = 'block';
+	document.getElementById('loginform').reset();	
+}
+
+
+
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+</body
+
+
+
+
+
+</html>
